@@ -4,9 +4,11 @@ import com.razorpay.PaymentLink;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
 import org.json.JSONObject;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary
 public class RazorPayPaymentGateway implements PaymentGateway{
 
     private RazorpayClient razorPayClient;
@@ -22,7 +24,7 @@ public class RazorPayPaymentGateway implements PaymentGateway{
 
         // ORDER DETAILS
         JSONObject paymentLinkRequest = new JSONObject();
-        paymentLinkRequest.put("amount", amount); // 10.00
+        paymentLinkRequest.put("amount", amount); // 1000 - > 10.00
         paymentLinkRequest.put("currency","INR");
 //        paymentLinkRequest.put("accept_partial",true);
 //        paymentLinkRequest.put("first_min_partial_amount",100);
@@ -34,7 +36,7 @@ public class RazorPayPaymentGateway implements PaymentGateway{
         // CUSTOMER DETAILS
         JSONObject customer = new JSONObject();
         customer.put("name","+919123456891");
-        customer.put("contact","karan");
+        customer.put("contact","karan bhatia");
         customer.put("email","karan.bhatia_1@scaler.com");
         paymentLinkRequest.put("customer",customer);
 
